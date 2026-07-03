@@ -7,7 +7,8 @@
 <body>
 <h1>Formulario de Materia</h1>
 
-<form th:action="@{/materias}" th:object="${materia}" method="post">
+<form th:action="${materia.id == null} ? @{/materias} : @{/materias/{id}(id=${materia.id})}"
+      th:object="${materia}" method="post">
 
     <label>Código:</label>
     <input type="text" th:field="*{codigo}" required minlength="6" maxlength="6">
