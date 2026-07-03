@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario Materia</title>
+</head>
+<body>
+<h1>Formulario de Materia</h1>
+
+<form th:action="@{/materias}" th:object="${materia}" method="post">
+
+    <label>Código:</label>
+    <input type="text" th:field="*{codigo}" required minlength="6" maxlength="6">
+    <span th:errors="*{codigo}"></span>
+    <br><br>
+
+    <label>Nombre:</label>
+    <input type="text" th:field="*{nombre}" required minlength="5" maxlength="80">
+    <span th:errors="*{nombre}"></span>
+    <br><br>
+
+    <label>Créditos:</label>
+    <input type="number" th:field="*{creditos}" required min="1" max="6">
+    <span th:errors="*{creditos}"></span>
+    <br><br>
+
+    <label>Semestre:</label>
+    <input type="number" th:field="*{semestre}" required min="1" max="10">
+    <span th:errors="*{semestre}"></span>
+    <br><br>
+
+    <button type="submit">Guardar</button>
+</form>
+
+<br>
+<a href="/materias">Volver</a>
+</body>
+</html>

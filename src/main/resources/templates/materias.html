@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Materias</title>
+</head>
+<body>
+<h1>Listado de Materias</h1>
+
+<a href="/materias/nueva">Nueva materia</a>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Código</th>
+        <th>Nombre</th>
+        <th>Créditos</th>
+        <th>Semestre</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="materia : ${materias}">
+        <td th:text="${materia.codigo}"></td>
+        <td th:text="${materia.nombre}"></td>
+        <td th:text="${materia.creditos}"></td>
+        <td th:text="${materia.semestre}"></td>
+        <td>
+            <a th:href="@{/materias/{id}/editar(id=${materia.id})}">Editar</a>
+
+            <form th:action="@{/materias/{id}/eliminar(id=${materia.id})}" method="post" style="display:inline;">
+                <button type="submit">Eliminar</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+
+<form th:action="@{/logout}" method="post">
+    <button type="submit">Cerrar sesión</button>
+</form>
+</body>
+</html>
